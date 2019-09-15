@@ -1,0 +1,23 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=flixter_db
+    volumes:
+      - "./tmp/db:/var/lib/postgresql/data"
+  web:
+    build: /home/josereynaud/Documents/DEV_PRJ/Flixter/
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - ".:/docker_app"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
