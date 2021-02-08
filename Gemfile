@@ -78,7 +78,7 @@ gem "autoprefixer-rails"
 gem 'simple_form'
 
 # Media Upload
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 
 # Amazon S3
 gem "fog-aws"
